@@ -1,11 +1,11 @@
-# Step 1: Build using pre-installed Maven and Java 17
-FROM maven:3.8.8-eclipse-temurin-17 AS build
+# Step 1: Build using Maven with Java 20
+FROM maven:3.9.6-eclipse-temurin-20 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Step 2: Run the compiled application
-FROM eclipse-temurin:17-jre-jammy
+# Step 2: Run using Java 20 Runtime
+FROM eclipse-temurin:20-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
