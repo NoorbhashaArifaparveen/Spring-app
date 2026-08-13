@@ -20,10 +20,7 @@ import in.ari.service.BookService;
 public class BookRestController {
 	@Autowired
 	private BookService service;
-	@GetMapping("/")
-	public ResponseEntity<String> welcomeMessage() {
-	    return new ResponseEntity<>("Welcome to the Book API! Use /books to see all records.", HttpStatus.OK);
-	}
+	
 
 	@PostMapping("/book")
 	public ResponseEntity<String> addBook(@RequestBody Book book){
